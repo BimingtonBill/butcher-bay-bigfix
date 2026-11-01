@@ -263,8 +263,12 @@ def test_form_renders_offscreen_without_changing_game(
     assert image.read_bytes().startswith(b"\x89PNG\r\n\x1a\n")
     assert image.stat().st_size > 10_000
     width, height = struct.unpack(">II", image.read_bytes()[16:24])
-    assert width >= 1000 * dpi / 96
-    assert height >= 850 * dpi / 96
+    # Windows caps top-level windows at the max track size (screen-derived);
+    # CI runners have small virtual screens.
+    track = ps("Add-Type -AssemblyName System.Windows.Forms; $s=[Windows.Forms.SystemInformation]::MaxWindowTrackSize; \"$($s.Width) $($s.Height)\"", host)
+    max_w, max_h = (int(v) for v in track.stdout.split()[-2:])
+    assert width >= min(1000 * dpi / 96, max_w)
+    assert height >= min(850 * dpi / 96, max_h)
     assert tree_hashes(game_dir) == before
 
 
