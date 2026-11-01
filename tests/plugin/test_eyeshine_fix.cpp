@@ -45,6 +45,7 @@ int wmain(int argc,wchar_t** argv) {
         pfd.cColorBits=32;pfd.cDepthBits=24;pfd.cStencilBits=8;
         auto format=ChoosePixelFormat(dc,&pfd);check(format && SetPixelFormat(dc,format,&pfd),"pixel format");
         auto context=wglCreateContext(dc);check(context && wglMakeCurrent(dc,context),"native context");
+        if(!std::strstr(reinterpret_cast<const char*>(glGetString(GL_EXTENSIONS)),"GL_ARB_fragment_program")) { std::cout<<"SKIP: needs a GPU driver with ARB fragment programs"<<std::endl; return 77; }
         auto gl=GetModuleHandleW(L"opengl32.dll"),fixture=LoadLibraryW(argv[1]);check(fixture!=nullptr,"fixture DLL");
         check(MH_Initialize()==MH_OK,"MinHook init");
         installGlHooks(gl,settings,{});installShadowTraceHooks(gl,settings);

@@ -26,6 +26,7 @@ int wmain(int argc,wchar_t** argv) {
         check(RegisterClassW(&cls)!=0,"register");auto win=CreateWindowW(cls.lpszClassName,L"",WS_POPUP,0,0,32,32,nullptr,nullptr,cls.hInstance,nullptr);
         auto dc=GetDC(win);PIXELFORMATDESCRIPTOR p{};p.nSize=sizeof(p);p.nVersion=1;p.dwFlags=PFD_SUPPORT_OPENGL|PFD_DRAW_TO_WINDOW;p.iPixelType=PFD_TYPE_RGBA;p.cColorBits=32;p.cAlphaBits=8;p.cDepthBits=24;p.cStencilBits=8;
         auto pf=ChoosePixelFormat(dc,&p);check(pf && SetPixelFormat(dc,pf,&p),"pixel format");auto rc=wglCreateContext(dc);check(rc && wglMakeCurrent(dc,rc),"context");
+        if(!std::strstr(reinterpret_cast<const char*>(glGetString(GL_EXTENSIONS)),"GL_ARB_fragment_program")) { std::cout<<"SKIP: needs a GPU driver with ARB fragment programs"<<std::endl; return 77; }
         auto gl=GetModuleHandleW(L"opengl32.dll"),fixture=LoadLibraryW(argv[1]);check(fixture!=nullptr,"fixture");
         const auto arrays=get<decltype(&glDrawArrays)>(fixture,"glDrawArrays");
         const auto begin=get<decltype(&glBegin)>(fixture,"glBegin");const auto end=get<decltype(&glEnd)>(fixture,"glEnd");

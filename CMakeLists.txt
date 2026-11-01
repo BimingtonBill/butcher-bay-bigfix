@@ -10,6 +10,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
+# Test executables stand in for the 2004 game, which never enables CET shadow
+# stacks; fixture detours rewrite return paths that a shadow stack rejects.
+# Newer MSVC toolsets mark executables CET-compatible by default.
+if(MSVC)
+    add_link_options("$<$<STREQUAL:$<TARGET_PROPERTY:TYPE>,EXECUTABLE>:/CETCOMPAT:NO>")
+endif()
+
 include(FetchContent)
 # The pinned dependencies declare old policy baselines. Keep them compatible
 # with CMake 4 and retain CMP0091 so they honor the static CRT selection.
@@ -153,14 +160,14 @@ target_link_libraries(bigfix_eyeshine_fix PRIVATE bigfix_core opengl32 gdi32 use
 add_dependencies(bigfix_eyeshine_fix bigfix_eyeshine_gl_fixture)
 foreach(scenario off coexist variant0 variant7 bloom)
     add_test(NAME bigfix_eyeshine_${scenario} COMMAND bigfix_eyeshine_fix $<TARGET_FILE:bigfix_eyeshine_gl_fixture> ${scenario})
-    set_tests_properties(bigfix_eyeshine_${scenario} PROPERTIES TIMEOUT 30)
+    set_tests_properties(bigfix_eyeshine_${scenario} PROPERTIES TIMEOUT 30 SKIP_RETURN_CODE 77)
 endforeach()
 add_executable(bigfix_eyeshine_region tests/plugin/test_eyeshine_region.cpp)
 target_link_libraries(bigfix_eyeshine_region PRIVATE bigfix_core opengl32 gdi32 user32)
 add_dependencies(bigfix_eyeshine_region bigfix_eyeshine_gl_fixture)
 foreach(scenario on off variant0 variant8)
     add_test(NAME bigfix_eyeshine_region_${scenario} COMMAND bigfix_eyeshine_region $<TARGET_FILE:bigfix_eyeshine_gl_fixture> ${scenario})
-    set_tests_properties(bigfix_eyeshine_region_${scenario} PROPERTIES TIMEOUT 30)
+    set_tests_properties(bigfix_eyeshine_region_${scenario} PROPERTIES TIMEOUT 30 SKIP_RETURN_CODE 77)
 endforeach()
 foreach(phase early late)
     add_test(NAME bigfix_gl_plugin_${phase} COMMAND bigfix_gl_plugin
