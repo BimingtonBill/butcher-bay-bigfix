@@ -48,6 +48,10 @@ set_target_properties(BigFix PROPERTIES PREFIX "" SUFFIX ".asi")
 
 enable_testing()
 add_library(bigfix_widescreen_image SHARED tests/plugin/widescreen_image.cpp)
+# The fake image is pure data: no CRT, so its array starts below every RVA the
+# test writes (lowest 0x9750) regardless of toolset version.
+target_link_options(bigfix_widescreen_image PRIVATE /NOENTRY /NODEFAULTLIB)
+target_compile_options(bigfix_widescreen_image PRIVATE /GS-)
 add_executable(bigfix_widescreen tests/plugin/test_widescreen.cpp)
 target_link_libraries(bigfix_widescreen PRIVATE bigfix_core)
 add_dependencies(bigfix_widescreen bigfix_widescreen_image bigfix_gl_stub)

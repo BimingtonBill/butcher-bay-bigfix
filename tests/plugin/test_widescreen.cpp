@@ -63,6 +63,8 @@ int wmain(int argc,wchar_t** argv) {
         logInit(log);
         const auto module=LoadLibraryW(argv[1]); check(module!=nullptr,"artificial PE");
         image=reinterpret_cast<unsigned char*>(module);
+        const auto array=reinterpret_cast<unsigned char*>(GetProcAddress(module,"widescreenImage"));
+        check(array && array<=image+0x9750 && array+0x300000>=image+0x220000,"artificial PE layout covers every patched RVA");
         for(const auto& item:widescreenSites()) {
             const auto& site=item.patch; void* handler=nullptr; unsigned stack=0;
             switch(site.rva) {
