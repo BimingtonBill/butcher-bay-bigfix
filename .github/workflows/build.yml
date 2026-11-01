@@ -1,0 +1,48 @@
+name: build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  windows:
+    name: Windows x64 Release
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Enable long Git paths
+        run: git config --global core.longpaths true
+
+      - name: Configure
+        run: cmake -S . -B build -A x64
+
+      - name: Build
+        run: cmake --build build --config Release --parallel
+
+      # The binary tests (tests/binaries) need RIDDICK_DIR and skip without it.
+      - name: C++ tests
+        run: ctest --test-dir build -C Release --output-on-failure
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install test dependencies
+        run: pip install pytest
+
+      - name: Python tests
+        run: python -m pytest installer/tests tools/tests -q
+
+      - name: Package
+        shell: pwsh
+        run: ./tools/package.ps1
+
+      - name: Upload release zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: BigFix
+          path: dist/*.zip
+          if-no-files-found: error

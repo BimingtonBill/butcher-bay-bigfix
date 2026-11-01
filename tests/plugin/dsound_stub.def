@@ -1,0 +1,14 @@
+EXPORTS
+DirectSoundCreate8=stubDirectSoundCreate8
+stubLastFlags
+stubLastBytes
+stubCreateCalls
+stubLastChannels
+stubLastRate
+stubLastBits
+stubConfigure
+stubLiveBuffers
+stubSets
+stubGets
+stubQueries
+stubRoomMask

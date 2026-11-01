@@ -1,0 +1,59 @@
+{
+  "url": "https://github.com/kcat/dsoal/releases/download/archive/DSOAL_r697.zip",
+  "sha256": "d9ffb95e58cacc7a2830fcf8dbd6a3b2b5f7881d23d5e7d45677680212510ac2",
+  "nestedArchive": "DSOAL_r697.zip",
+  "nestedSha256": "1a7435c2c9d376099b917ba65c8e3180311163e1f918b84de1a4475c314434a0",
+  "sources": [
+    {
+      "project": "dsoal",
+      "revision": "e11128250439d586483ee6598d1670ab52ab5e37",
+      "url": "https://codeload.github.com/kcat/dsoal/zip/e11128250439d586483ee6598d1670ab52ab5e37",
+      "sha256": "9cb06539f92931cfb105d92360d5443a91b8265ebbd63c8a6ed450e23be91e9c"
+    },
+    {
+      "project": "openal-soft",
+      "revision": "1fbc89b2279280ab89509b5d5adcd43b941ee0a1",
+      "url": "https://codeload.github.com/kcat/openal-soft/zip/1fbc89b2279280ab89509b5d5adcd43b941ee0a1",
+      "sha256": "149557ac69a22b00bf88491570136be9dbb09d2fbee78b2ac4dd3ff3a2f6e064"
+    }
+  ],
+  "files": [
+    {
+      "name": "dsound.dll",
+      "sha256": "3aff3479a359ba2124b51a93d002cf241f849f8e9bacc3d225bfe23e03b31df4",
+      "exports": [
+        "DirectSoundCreate",
+        "DirectSoundCreate8",
+        "DirectSoundEnumerateA",
+        "DllGetClassObject"
+      ]
+    },
+    {
+      "name": "dsoal-aldrv.dll",
+      "sha256": "072a09cdd7dd6fef0cf4ee9709991400c65971ee6ac701642fffe330eebbc3a3",
+      "exports": [
+        "alGetProcAddress",
+        "alcGetProcAddress",
+        "alcOpenDevice",
+        "alcCreateContext"
+      ]
+    }
+  ],
+  "environment": {
+    "SND_USE3D": "1",
+    "SND_USEEAX": "1"
+  },
+  "notices": [
+    "DSOAL-License.txt",
+    "DSOAL-License_fmt.txt",
+    "DSOAL-ReadMe.txt",
+    "DSOAL-Version.txt",
+    "OpenALSoft-ChangeLog.txt",
+    "OpenALSoft-License.txt",
+    "OpenALSoft-License_Apache-2.0.txt",
+    "OpenALSoft-License_BSD-3-Clause.txt",
+    "OpenALSoft-License_PFFFT.txt",
+    "OpenALSoft-ReadMe.txt",
+    "OpenALSoft-Version.txt"
+  ]
+}

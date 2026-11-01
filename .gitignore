@@ -1,0 +1,7 @@
+build/
+local/
+*.TGA
+shader_dump/
+.venv/
+__pycache__/
+/local/

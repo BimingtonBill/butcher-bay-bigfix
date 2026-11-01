@@ -1,0 +1,342 @@
+{
+  "builds": [
+    {
+      "id": "EU11",
+      "label": "EU 1.1",
+      "supported": true,
+      "files": {
+        "Content/GameClasses_Win64_AMD64.dll": "263c03a430f070ebf5f32c59b598b9e8e98a9d06d07172f76f6786bc0dfc7773",
+        "Content/GameWorld_Win64_AMD64.dll": "749d018c8dcded113cc4fb0b1de574e2543e31de61a6b842f2359fe4cde2e5c7",
+        "System/Win32_x86/SbzEngine.exe": "09d95ee330afe64456faaad71967d5ea3bf551c8922ca48a67b41609710ae703",
+        "System/Win32_x86_SSE/SbzEngine.exe": "c87f3409943cca8343f2a73552f84ad1347179463d9d8f0c1152aa214544369c",
+        "System/Win32_x86_SSE2/SbzEngine.exe": "6016990b48a4480fd53205ff3f000ea20eb6e5a12c4b16316c34a48f745ef0b3",
+        "System/Win64_AMD64/MCCDyn.dll": "4ab12ce5f13a0319dff09e43de22f0f787bac4dd75283287f6cbe388f9cb659b",
+        "System/Win64_AMD64/MSystem.dll": "b59eb2cc98ea40e9a5d8d79f67027965bb4bbb8b93c9e8cea8cb46c81d689500",
+        "System/Win64_AMD64/MXR.dll": "c2d898b4a69dcd362f25f88ba2426ac5fb7efb879bf0f2721d3c8d5b15aec71f",
+        "System/Win64_AMD64/RndrGL.dll": "400dc6b50f65c9b884e85daeac7b1b1aaa2f19d2cbf4dbd9e597abae284ea348",
+        "System/Win64_AMD64/SbzEngine.exe": "5056ffe030c2ba8687b032f5f2ed95b42c4814db87dec61444a6cf264deaca38",
+        "System/Win64_AMD64/dbghelp.dll": "2616c69bc2eab4c04ed378b1471a9466a7cd4de4947fbab30707fb66b04a38c3"
+      }
+    },
+    {
+      "id": "EU10",
+      "label": "EU 1.0",
+      "supported": false,
+      "files": {
+        "Content/GameClasses_Win64_AMD64.dll": "b376d8001791b547549342c6ae77983687b2eb0b49dd320aa5df8a399dde64d2",
+        "Content/GameWorld_Win64_AMD64.dll": "23076aec4512b3e13bc21ff6565da23ada0e277dc30e1e1777397b949bc387d7",
+        "System/Win32_x86/SbzEngine.exe": "5583e62d30012a40101f51fddb6147c674f9416682b33c2503cb6700a53568ae",
+        "System/Win32_x86_SSE/SbzEngine.exe": "34be6500a80f479dc82f882c13406094ef71b71c7b633f357f011530579e327b",
+        "System/Win32_x86_SSE2/SbzEngine.exe": "8ddcb6315cca4eb34fd4211c07695e677c7a3575be6eeeff7bfd8119a54dbbb2",
+        "System/Win64_AMD64/MCCDyn.dll": "0593a563214012557158e84a4c3fb085e33f24eaa0c76914ed92c7ee66dc7479",
+        "System/Win64_AMD64/MSystem.dll": "2dda3138f4e353a120960bb8f3183a62320b1b78cba8733a9879f7eb98311380",
+        "System/Win64_AMD64/MXR.dll": "583e60e4dacfb7157c9c535577c16dec6fc4b44c3e33825a59065a386a5e9443",
+        "System/Win64_AMD64/RndrGL.dll": "c086211cde83aa9ee3dd21f39fca6402438531798cf650e5ebab89bed1a7e7ce",
+        "System/Win64_AMD64/SbzEngine.exe": "f26bf46637a088ef9aae07e4893b65a469b242069ff9b5b8652be899bb7c9303"
+      }
+    }
+  ],
+  "patchedFiles": [
+    "Content/GameClasses_Win64_AMD64.dll",
+    "Content/GameWorld_Win64_AMD64.dll",
+    "System/Win64_AMD64/MSystem.dll",
+    "System/Win64_AMD64/RndrGL.dll"
+  ],
+  "reportFiles": [
+    "Content/GameClasses_Win64_AMD64.dll",
+    "Content/GameWorld_Win64_AMD64.dll",
+    "System/Win32_x86/SbzEngine.exe",
+    "System/Win32_x86_SSE/SbzEngine.exe",
+    "System/Win32_x86_SSE2/SbzEngine.exe",
+    "System/Win64_AMD64/MCCDyn.dll",
+    "System/Win64_AMD64/MSystem.dll",
+    "System/Win64_AMD64/MXR.dll",
+    "System/Win64_AMD64/RndrGL.dll",
+    "System/Win64_AMD64/SbzEngine.exe",
+    "System/Win64_AMD64/dbghelp.dll"
+  ],
+  "patchSites": [
+    {
+      "name": "subtitle_list",
+      "file": "Content/GameClasses_Win64_AMD64.dll",
+      "rva": 400112,
+      "expected": "4c89442418488954241048894c2408",
+      "source": "src/widescreen_sites.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "force_eyeshine",
+      "file": "Content/GameClasses_Win64_AMD64.dll",
+      "rva": 1888363,
+      "expected": "0f8262020000",
+      "source": "src/patch_table.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "camera_client_data",
+      "file": "Content/GameClasses_Win64_AMD64.dll",
+      "rva": 1979312,
+      "expected": "4883ec38488b89a00100004c8d0d9efb1600",
+      "source": "src/widescreen_sites.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "!camera_data_caller",
+      "file": "Content/GameClasses_Win64_AMD64.dll",
+      "rva": 2155169,
+      "expected": "488bc8488bd8e80451fdff4885c0488bf0",
+      "source": "src/widescreen_sites.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "!camera_external_flag",
+      "file": "Content/GameClasses_Win64_AMD64.dll",
+      "rva": 2155227,
+      "expected": "8b83500100000fbae01a0f83c0000000",
+      "source": "src/widescreen_sites.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "!camera_authored_branches",
+      "file": "Content/GameClasses_Win64_AMD64.dll",
+      "rva": 2155435,
+      "expected": "0fbae0177318410f28d2498bd4488bcee890c0fdff440f28c8e9ba00000080bef410000002750ef3440f100db9eb0b00e9a3000000",
+      "source": "src/widescreen_sites.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "player_hud",
+      "file": "Content/GameClasses_Win64_AMD64.dll",
+      "rva": 2213120,
+      "expected": "488bc44881ec9801000048c78424a8000000feffffff",
+      "source": "src/widescreen_sites.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "eyeshine_scale",
+      "file": "Content/GameWorld_Win64_AMD64.dll",
+      "rva": 22640,
+      "expected": "f6819c20000004488bc2",
+      "source": "src/eyeshine_variants.h",
+      "build": "EU11"
+    },
+    {
+      "name": "hud_matrix_rebuild",
+      "file": "Content/GameWorld_Win64_AMD64.dll",
+      "rva": 224176,
+      "expected": "4883ec7848895c247048897c2468",
+      "source": "src/widescreen_sites.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "rectangle_submit",
+      "file": "Content/GameWorld_Win64_AMD64.dll",
+      "rva": 233104,
+      "expected": "488bc44881ec18010000448b5a10488958f8",
+      "source": "src/video_trace.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "aspect_fit",
+      "file": "Content/GameWorld_Win64_AMD64.dll",
+      "rva": 236240,
+      "expected": "488bc44881ecb8000000488958f8488968f0488970e8",
+      "source": "src/video_trace.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "rectangle_dispatch",
+      "file": "Content/GameWorld_Win64_AMD64.dll",
+      "rva": 249168,
+      "expected": "488954241048894c2408488bc44881ecc8030000",
+      "source": "src/video_trace.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "!menu_vertices_caller",
+      "file": "Content/GameWorld_Win64_AMD64.dll",
+      "rva": 298837,
+      "expected": "488d8c2420020000e8240914004c8bd8",
+      "source": "src/widescreen_sites.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "video_paint",
+      "file": "Content/GameWorld_Win64_AMD64.dll",
+      "rva": 480720,
+      "expected": "488bc44881ec7802000048c7842440010000feffffff",
+      "source": "src/video_trace.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "gameplay_camera",
+      "file": "Content/GameWorld_Win64_AMD64.dll",
+      "rva": 1273584,
+      "expected": "488bc44881ecd8000000488958f8488970f0",
+      "source": "src/widescreen_sites.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "skip_startup_logos",
+      "file": "Content/GameWorld_Win64_AMD64.dll",
+      "rva": 1999072,
+      "expected": "63675f726f6f746d656e752022696e74726f2200",
+      "source": "src/patch_table.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "!menu_clipped_projection",
+      "file": "System/Win64_AMD64/MSystem.dll",
+      "rva": 356010,
+      "expected": "8b434c2bc12b43444103c1f30f2ad88b43482b4350412bc203c2",
+      "source": "src/widescreen_sites.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "!menu_requested_frustum",
+      "file": "System/Win64_AMD64/MSystem.dll",
+      "rva": 357345,
+      "expected": "448b5b4c442b5b44448b5350442b5348897c2430897c2434488b44243048894424304585db440f48df4585d2440f48d7418bc3992bc2d1f8448bc0448bc841f7d9",
+      "source": "src/widescreen_sites.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "menu_view_vertices",
+      "file": "System/Win64_AMD64/MSystem.dll",
+      "rva": 358288,
+      "expected": "48534883ec20488bd9",
+      "source": "src/widescreen_sites.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "borderless_numeric_selection",
+      "file": "System/Win64_AMD64/MSystem.dll",
+      "rva": 489605,
+      "expected": "85c07508418bdfe9b2010000",
+      "source": "src/patch_table.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "original_windowed_selection",
+      "file": "System/Win64_AMD64/MSystem.dll",
+      "rva": 489605,
+      "expected": "85c07508418bdfe9b2010000",
+      "source": "src/patch_table.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "mouse_poll",
+      "file": "System/Win64_AMD64/MSystem.dll",
+      "rva": 637632,
+      "expected": "4c8bdc4881ec3807000048837928004d896bd04c8be9",
+      "source": "src/raw_mouse.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "decoder_start",
+      "file": "System/Win64_AMD64/MSystem.dll",
+      "rva": 983024,
+      "expected": "488bc44881ec2802000048c7442448feffffff488958f8",
+      "source": "src/video_trace.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "decoder_close",
+      "file": "System/Win64_AMD64/MSystem.dll",
+      "rva": 984624,
+      "expected": "4883ec5848c7442420feffffff48895c2450",
+      "source": "src/video_trace.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "decoder_owner",
+      "file": "System/Win64_AMD64/MSystem.dll",
+      "rva": 990800,
+      "expected": "48894c2408488bc44881ec8800000048c7442450feffffff",
+      "source": "src/video_trace.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "texture_size_clamp",
+      "file": "System/Win64_AMD64/RndrGL.dll",
+      "rva": 33971,
+      "expected": "000800007e0a",
+      "source": "src/patch_table.cpp",
+      "build": "EU11"
+    },
+    {
+      "name": "projection_upload",
+      "file": "System/Win64_AMD64/RndrGL.dll",
+      "rva": 38740,
+      "expected": "ff1586540800",
+      "source": "src/widescreen_sites.cpp",
+      "build": "EU11"
+    }
+  ],
+  "install": [
+    "BigFix.asi",
+    "BigFix.ini",
+    "winmm.dll"
+  ],
+  "components": {
+    "dsoal": {
+      "url": "https://github.com/kcat/dsoal/releases/download/archive/DSOAL_r697.zip",
+      "sha256": "d9ffb95e58cacc7a2830fcf8dbd6a3b2b5f7881d23d5e7d45677680212510ac2",
+      "nestedArchive": "DSOAL_r697.zip",
+      "nestedSha256": "1a7435c2c9d376099b917ba65c8e3180311163e1f918b84de1a4475c314434a0",
+      "sources": [
+        {
+          "project": "dsoal",
+          "revision": "e11128250439d586483ee6598d1670ab52ab5e37",
+          "url": "https://codeload.github.com/kcat/dsoal/zip/e11128250439d586483ee6598d1670ab52ab5e37",
+          "sha256": "9cb06539f92931cfb105d92360d5443a91b8265ebbd63c8a6ed450e23be91e9c"
+        },
+        {
+          "project": "openal-soft",
+          "revision": "1fbc89b2279280ab89509b5d5adcd43b941ee0a1",
+          "url": "https://codeload.github.com/kcat/openal-soft/zip/1fbc89b2279280ab89509b5d5adcd43b941ee0a1",
+          "sha256": "149557ac69a22b00bf88491570136be9dbb09d2fbee78b2ac4dd3ff3a2f6e064"
+        }
+      ],
+      "files": [
+        {
+          "name": "dsound.dll",
+          "sha256": "3aff3479a359ba2124b51a93d002cf241f849f8e9bacc3d225bfe23e03b31df4",
+          "exports": [
+            "DirectSoundCreate",
+            "DirectSoundCreate8",
+            "DirectSoundEnumerateA",
+            "DllGetClassObject"
+          ]
+        },
+        {
+          "name": "dsoal-aldrv.dll",
+          "sha256": "072a09cdd7dd6fef0cf4ee9709991400c65971ee6ac701642fffe330eebbc3a3",
+          "exports": [
+            "alGetProcAddress",
+            "alcGetProcAddress",
+            "alcOpenDevice",
+            "alcCreateContext"
+          ]
+        }
+      ],
+      "environment": {
+        "SND_USE3D": "1",
+        "SND_USEEAX": "1"
+      },
+      "notices": [
+        "DSOAL-License.txt",
+        "DSOAL-License_fmt.txt",
+        "DSOAL-ReadMe.txt",
+        "DSOAL-Version.txt",
+        "OpenALSoft-ChangeLog.txt",
+        "OpenALSoft-License.txt",
+        "OpenALSoft-License_Apache-2.0.txt",
+        "OpenALSoft-License_BSD-3-Clause.txt",
+        "OpenALSoft-License_PFFFT.txt",
+        "OpenALSoft-ReadMe.txt",
+        "OpenALSoft-Version.txt"
+      ]
+    }
+  }
+}

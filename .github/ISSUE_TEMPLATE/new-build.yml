@@ -1,0 +1,47 @@
+name: New game build fingerprint
+description: Supply metadata for a US 5-CD, Russian, Polish or repack build of the original 2004 game.
+title: "[New build]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        BigFix needs verified module hashes and patch sites before supporting a new build.
+        Install Python 3.9+ and run from outside your game folder (adjust the game path):
+
+        Windows, from a source checkout:
+        `powershell -ExecutionPolicy Bypass -File .\tools\fingerprint.ps1 -GameDir 'D:\Games\Riddick' -Output 'bigfix-fingerprint.json'`
+
+        POSIX, from a source checkout:
+        `sh tools/fingerprint.sh --game-dir '/path/to/Riddick' --output 'bigfix-fingerprint.json'`
+
+        In a release zip the fingerprint scripts are alongside install.ps1/install.sh; omit `tools/`.
+        The collector reads the game and writes only the report outside it. It records hashes,
+        file sizes, PE timestamps, available Windows file versions, language hint filenames
+        and short patch-site byte probes.
+        Review the report before attaching it. Do not upload executables, DLLs, cracks,
+        archives, discs, keys or the official patch. A matching probe is not support approval.
+  - type: input
+    id: release
+    attributes:
+      label: Release and patch version
+      description: "For example: US 5-CD 1.1, Russian, Polish, or repack label if known. No download links."
+    validations:
+      required: true
+  - type: input
+    id: language
+    attributes:
+      label: Selected game language and OS
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: Fingerprint report
+      description: Attach bigfix-fingerprint.json here (rename to .json.txt if GitHub rejects the extension).
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Does the original x64 executable start? Are any files known to have been replaced? No game files or download links.

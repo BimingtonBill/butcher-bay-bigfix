@@ -1,0 +1,7 @@
+EXPORTS
+glDrawArrays=fixtureArrays
+glDrawElements=fixtureElements
+glBegin=fixtureBegin
+glEnd=fixtureEnd
+glCallList=fixtureList
+glClear=fixtureClear

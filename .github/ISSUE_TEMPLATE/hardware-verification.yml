@@ -1,0 +1,74 @@
+name: Hardware verification report
+description: Help verify NVIDIA, AMD, Intel, Wine, Proton, or Steam Deck.
+title: "[Hardware]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Follow [docs/VERIFY.md](https://github.com/BimingtonBill/butcher-bay-bigfix/blob/HEAD/docs/VERIFY.md).
+        Check only items you observed passing. Explain failures and untested items below.
+        Logs show hooks and selected formats; they do not prove visual correctness.
+  - type: input
+    id: gpu
+    attributes:
+      label: GPU vendor and model
+      placeholder: AMD Radeon / Intel Arc or integrated / NVIDIA model; Deck LCD or OLED
+    validations:
+      required: true
+  - type: input
+    id: driver
+    attributes:
+      label: Driver version
+      description: Include Mesa version on Linux and the renderer from BigFix.log.
+    validations:
+      required: true
+  - type: textarea
+    id: platform
+    attributes:
+      label: OS and compatibility runtime
+      description: Windows build or Linux distro/kernel; exact Wine or Proton version; SteamOS version and Desktop/Gaming Mode for Deck. Say native Windows when no runtime is used.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: BigFix version
+      description: From BigFix.log; include commit for self-built binaries.
+    validations:
+      required: true
+  - type: textarea
+    id: setup
+    attributes:
+      label: Game and settings
+      description: Game region/patch, executable SHA-256, resolution/refresh, shader mode, AA request, FOV value, mouse polling rate or Deck input mapping, and other mods/driver overrides.
+    validations:
+      required: true
+  - type: checkboxes
+    id: passes
+    attributes:
+      label: Observed passes
+      options:
+        - label: Starts and produces BigFix.log
+        - label: Renders at native resolution
+        - label: Borderless covers screen and alt-tab returns correctly
+        - label: 2.0++ retains cast shadows with no Eyeshine flicker
+        - label: Ship sequence bloom looks correct
+        - label: AA visibly works (state requested and actual samples below)
+        - label: HUD and subtitles have correct 4:3 proportions
+        - label: FOV changes world view and hands/weapons remain acceptable
+        - label: Raw mouse motion, buttons and wheel work
+        - label: Audio works (state background-audio result below)
+  - type: textarea
+    id: results
+    attributes:
+      label: Failures, untested items, and AA fallback
+      description: Give pass/fail/untested for anything unchecked. Copy MSAA requested/selected/context and fallback lines verbatim (or state none reported). Include FOV/hand observations and the tested scene. Mark spoilers; never upload game files or saves.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Attach BigFix.log
+      description: Drag the log here; include BigFix.prev.log for comparisons. If no log was created, say so and paste launch options/installer output. Review personal paths before posting. Attach screenshots or a short flicker recording if useful.
+    validations:
+      required: true

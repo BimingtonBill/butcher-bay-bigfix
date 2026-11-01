@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Installation and troubleshooting
+    url: https://github.com/BimingtonBill/butcher-bay-bigfix/blob/HEAD/README.md
+    about: Read requirements, installation steps, and known issues before reporting.
+  - name: Security reporting
+    url: https://github.com/BimingtonBill/butcher-bay-bigfix/blob/HEAD/SECURITY.md
+    about: Use the private reporting process for security vulnerabilities.

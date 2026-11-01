@@ -1,0 +1,37 @@
+name: Bug report
+description: Report a reproducible BigFix problem with logs.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For the original 2004 game, x64 EU 1.1. Check README known issues first.
+        Do not upload game files, saves, cracks, disc images, or the official patch.
+  - type: input
+    id: version
+    attributes:
+      label: BigFix version
+      description: Copy the BigFix version from BigFix.log; include commit if self-built.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Hardware and software
+      description: GPU vendor/model, driver version, OS version, resolution/refresh, and Wine/Proton/SteamOS version if used. Include game region/patch and x64 executable SHA-256 if known.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps, expected result, actual result
+      description: Include level/checkpoint name, relevant BigFix.ini settings, shader mode, and whether other mods or driver overrides are active. Mark later-level spoilers.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs and evidence
+      description: Drag BigFix.log and BigFix.prev.log here (System/Win64_AMD64). If no log exists, say so and include installer output and launch options. Review logs for personal paths before posting. Cropped screenshots or a short flicker recording help.
+    validations:
+      required: true
